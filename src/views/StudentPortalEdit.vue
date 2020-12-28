@@ -22,6 +22,19 @@ export default {
       newUniversityName: "",
       newEdDetails: "",
       newSkillName: "",
+      newCapName: "",
+      newDescription: "",
+      newUrl: "", 
+      newScreenShotUrl: "",
+      newFirstName: "",
+      newLastName: "",
+      newShortBio: "",
+      newLinkedinUrl: "",
+      newTwitterHandle: "",
+      newPersonalWebsite: "",
+      newOnlineResumeUrl: "",
+      newGithubUrl: "",
+      newPhotoUrl: "",
 
     };
   },
@@ -63,6 +76,33 @@ export default {
       };
       axios.patch("api/students/" + resume.id, params).then(response => {
         console.log("Skills Updated!", response.data);
+      });
+    },
+    updateResumeCapstone: function(resume) {
+      var params = {
+        name: this.newCapName,
+        description: this.newDescription,
+        url: this.newUrl,
+        screenshot_url: this.newScreenShotUrl,
+      };
+      axios.patch("api/students/" + resume.id, params).then(response => {
+        console.log("Capstone Updated!", response.data);
+      });
+    },
+    updateResumeInformation: function(resume) {
+      var params = {
+        first_name: this.newFirstName,
+        last_name: this.newLastName,
+        short_bio: this.newShortBio,
+        linkedin_url: this.newLinkedinUrl,
+        twitter_handle: this.newTwitterHandle,
+        personal_website_url: this.newPersonalWebsite,
+        online_resume_url: this.newOnlineResumeUrl,
+        github_url: this.newGithubUrl,
+        photo_url: this.newPhotoUrl,
+      };
+      axios.patch("api/students/" + resume.id, params).then(response => {
+        console.log("Information Updated!", response.data);
       });
     },
   },
