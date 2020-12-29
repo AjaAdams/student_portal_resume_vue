@@ -45,6 +45,9 @@ export default {
         return false;
       }
     },
+    getUserId: function() {
+      return localStorage.getItem("studentId")
+    }
   },
 };
 </script>
