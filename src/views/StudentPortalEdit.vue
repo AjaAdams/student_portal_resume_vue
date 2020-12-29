@@ -1,6 +1,11 @@
 <template>
   <div class="about">
     <h1>This is an EDIT page</h1>
+    <button>Update Personal Info</button>
+    <button>Update Experience</button>
+    <button>Update Education</button>
+    <button>Update Skills</button>
+    <button>Update Capstone</button>
   </div>
 </template>
 
