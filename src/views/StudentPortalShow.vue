@@ -38,10 +38,11 @@
     <div v-for="capstone in capstones">
       <h4>{{ capstone.name }}</h4>
       <h4>{{ capstone.description }}</h4>
-      <!-- <h4>{{  capstone.url }}</h4> -->
-      <!-- <h4>{{  capstone.screenshot_url }}</h4> -->
+      <router-link>
+        <h4>{{  capstone.url }}</h4>
+      </router-link>
+      <img v-bind:src="capstone.screenshot_url">
     </div>
-
     <router-link v-bind:to="`/${student.id}/edit`">
       <button>edit</button>
     </router-link>
@@ -54,21 +55,21 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      student: [],
-      experience: [],
-      education: [],
-      skill: [],
-      capstone: [],
+      students: {},
+      experiences: [],
+      educations: [],
+      skills: [],
+      capstones: [],
     };
   },
 
   created: function () {
-    axios.get("/api/students/" + this.student.id).then((response) => {
+    axios.get("/api/students/").then((response) => {
       this.student = response.data;
-      this.experience = response.data.experience;
-      this.education = response.data.education;
-      this.skill = response.data.skill;
-      this.capstone = response.data.capstone;
+      this.experiences = response.data.experiences;
+      this.educations = response.data.educations;
+      this.skillss = response.data.skills;
+      this.capstone = response.data.capstones;
       console.log("show student info", this.student);
       console.log("show experience info", this.experience);
       console.log("show education info", this.education);

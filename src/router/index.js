@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import StudentPortalShow from "../views/StudentPortalShow.vue";
 import Logout from "../views/Logout.vue";
+import StudentPortalEdit from "../views/StudentPortalEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -22,9 +23,14 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path: "/show",
+    path: "/students/:id",
     name: "student-portal-show",
     component: StudentPortalShow,
+  },
+  {
+    path: "/students/:id/edit",
+    name: "student-portal-edit",
+    component: StudentPortalEdit,
   },
   {
     path: "/login",
