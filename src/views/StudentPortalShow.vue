@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>{{ student.first_name }}{{ student.last_name }}</h2>
+    <h2>{{ student.first_name }} {{ student.last_name }}</h2>
     <h4>{{ student.email }}</h4>
     <h4>{{ student.phone_number }}</h4>
     <h4>{{ student.short_bio }}</h4>
@@ -12,7 +12,7 @@
     <img v-bind:src="student.photo_url">
 
     <h3>Experience:</h3>
-    <div v-for="experience in experiences">
+    <div v-for="experience in student.experiences">
       <h4>{{ experience.start_date }}</h4>
       <h4>{{ experience.end_date }}</h4>
       <h4>{{ experience.job_title }}</h4>
@@ -21,7 +21,7 @@
     </div>
 
     <h3>Education:</h3>
-    <div v-for="education in educations">
+    <div v-for="education in student.educations">
       <h4>{{ education.start_date }}</h4>
       <h4>{{ education.end_date }}</h4>
       <h4>{{ education.degree }}</h4>
@@ -30,12 +30,12 @@
     </div>
 
     <h3>Skills:</h3>
-    <div v-for="skill in skills">
+    <div v-for="skill in student.skills">
       <h4>{{ skill.name }}</h4>
     </div>
 
     <h3>Capstone:</h3>
-    <div v-for="capstone in capstones">
+    <div v-for="capstone in student.capstones">
       <h4>{{ capstone.name }}</h4>
       <h4>{{ capstone.description }}</h4>
       <router-link>
@@ -55,20 +55,20 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      students: {},
-      experiences: [],
-      educations: [],
+      student: {},
+      experience: [],
+      education: [],
       skills: [],
       capstones: [],
     };
   },
 
   created: function () {
-    axios.get("/api/students/").then((response) => {
+    axios.get("/api/students/" + localStorage.getItem("studentId")).then((response) => {
       this.student = response.data;
-      this.experiences = response.data.experiences;
-      this.educations = response.data.educations;
-      this.skillss = response.data.skills;
+      this.experience = response.data.experiences;
+      this.education = response.data.educations;
+      this.skill = response.data.skills;
       this.capstone = response.data.capstones;
       console.log("show student info", this.student);
       console.log("show experience info", this.experience);
